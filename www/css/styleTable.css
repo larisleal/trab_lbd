@@ -1,0 +1,25 @@
+ th{
+         border: 0px solid #ffffff;
+         color: #ffffff;
+         text-align: center;
+         font-family: Verdana, Arial, Helvetica;
+         font-size: 14px;
+         text-align: center;
+         background-color: #000;
+        }
+        td {
+        border: 3px solid #ffffff;
+        color: #5d5d5d;
+        font-size: 14px;
+        font-weight: normal;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        background-color: #efeeee;
+        text-align: center;
+        table-layout: fixed;
+        height: 100px;
+        transition: height 0.4s;
+        /*propriedade desejada*/
+          max-width: 100px;
+          overflow: hidden;
+          white-space: nowrap
+        }
