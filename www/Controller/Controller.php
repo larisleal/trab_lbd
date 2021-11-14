@@ -397,7 +397,6 @@ public function goImportCsv(){
           $message = $_POST['message'];
 
           $messageLead = "Nome: " . $name . " \nMensagem: " . $message . " \n";
-          $envio = mail("francisco@tecreason.com.br", "Novo Interessado", $messageLead);
 
           $interessado = new Interessado($id, $name, $email, $phone, $message, null);
           $addOne = new addInteressados();

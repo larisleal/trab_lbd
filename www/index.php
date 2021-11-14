@@ -77,7 +77,7 @@ class Route{
         $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
         //parse_url para localhost
-        $url = substr($url, 19, 1000);  // 11 letras = /agrosantairia/www
+        $url = substr($url, 13, 1000);  // 11 letras = /trab_lbd/www
         return $url;
         
     }

@@ -298,7 +298,7 @@
                 <!-- /.row -->
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2019 &copy; TecReason - Treinamento e Consultoria</footer>
+            <footer class="footer text-center"> 2019 &copy; Trabalho de LBD 2021/2</footer>
         </div>
         <!-- /#page-wrapper -->
     </div>
