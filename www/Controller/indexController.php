@@ -41,7 +41,7 @@ class indexController
                 $message = $_POST['message'];
       
                 $messageLead = "Nome: " . $name . " \nMensagem: " . $message . " \n";
-                $envio = mail(ContactEmail3, "Novo Interessado", $messageLead);
+                //$envio = mail(ContactEmail3, "Novo Interessado", $messageLead);
       
                 $interessado = new Interessado($id, $name, $email, $phone, $message, null);
                 $addOne = new addInteressados();
