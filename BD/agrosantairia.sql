@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Tempo de geração: 16/11/2021 às 17:12
+-- Tempo de geração: 16/11/2021 às 17:20
 -- Versão do servidor: 10.4.20-MariaDB
 -- Versão do PHP: 7.4.22
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `agrosantairia`
 --
-CREATE DATABASE IF NOT EXISTS `agrosantairia` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `agrosantairia`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `agrosantairia`;
 -- Estrutura para tabela `clientes`
 --
 
-DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `IDCliente` bigint(20) NOT NULL,
   `Nome` varchar(255) NOT NULL,
@@ -53,7 +50,6 @@ INSERT INTO `clientes` (`IDCliente`, `Nome`, `DataNasc`, `Email`, `Telefone`) VA
 -- Estrutura para tabela `interessado`
 --
 
-DROP TABLE IF EXISTS `interessado`;
 CREATE TABLE `interessado` (
   `IDInteressado` bigint(255) NOT NULL,
   `Nome` varchar(255) NOT NULL,
@@ -76,7 +72,6 @@ INSERT INTO `interessado` (`IDInteressado`, `Nome`, `Email`, `Telefone`, `Mensag
 -- Estrutura para tabela `login`
 --
 
-DROP TABLE IF EXISTS `login`;
 CREATE TABLE `login` (
   `IDLogin` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
@@ -97,7 +92,6 @@ INSERT INTO `login` (`IDLogin`, `user`, `password`, `IDGroup`) VALUES
 -- Estrutura para tabela `logs`
 --
 
-DROP TABLE IF EXISTS `logs`;
 CREATE TABLE `logs` (
   `id` int(11) NOT NULL,
   `IDVenda` int(11) NOT NULL,
@@ -120,7 +114,6 @@ INSERT INTO `logs` (`id`, `IDVenda`, `IDProduto`, `acao`, `data`) VALUES
 -- Estrutura para tabela `produtos`
 --
 
-DROP TABLE IF EXISTS `produtos`;
 CREATE TABLE `produtos` (
   `IDProduto` int(11) NOT NULL,
   `Nome` varchar(255) NOT NULL
@@ -136,7 +129,6 @@ INSERT INTO `produtos` (`IDProduto`, `Nome`) VALUES
 --
 -- Gatilhos `produtos`
 --
-DROP TRIGGER IF EXISTS `insertProduto`;
 DELIMITER $$
 CREATE TRIGGER `insertProduto` AFTER INSERT ON `produtos` FOR EACH ROW INSERT INTO logs VALUES(null, 0, NEW.IDProduto, 'INSERT PRODUTO', NOW())
 $$
@@ -148,7 +140,6 @@ DELIMITER ;
 -- Estrutura para tabela `vendas`
 --
 
-DROP TABLE IF EXISTS `vendas`;
 CREATE TABLE `vendas` (
   `IDVenda` bigint(20) NOT NULL,
   `Produto` varchar(255) NOT NULL,
@@ -169,17 +160,14 @@ INSERT INTO `vendas` (`IDVenda`, `Produto`, `Quantidade`, `Valor`, `Total`, `IDC
 --
 -- Gatilhos `vendas`
 --
-DROP TRIGGER IF EXISTS `deleteVenda`;
 DELIMITER $$
 CREATE TRIGGER `deleteVenda` BEFORE DELETE ON `vendas` FOR EACH ROW INSERT INTO logs VALUES(null, OLD.IDVenda, "DELETE VENDA", NOW())
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `insertVenda`;
 DELIMITER $$
 CREATE TRIGGER `insertVenda` AFTER INSERT ON `vendas` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.IDVenda, 'INSERT VENDA', NOW())
 $$
 DELIMITER ;
-DROP TRIGGER IF EXISTS `updateVenda`;
 DELIMITER $$
 CREATE TRIGGER `updateVenda` AFTER UPDATE ON `vendas` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.IDVenda, 'UPDATE VENDA', NOW())
 $$
@@ -191,7 +179,6 @@ DELIMITER ;
 -- Estrutura para tabela `visitas`
 --
 
-DROP TABLE IF EXISTS `visitas`;
 CREATE TABLE `visitas` (
   `IDVisita` int(11) NOT NULL,
   `Visitas_agrosantairia` int(11) NOT NULL DEFAULT 0,
